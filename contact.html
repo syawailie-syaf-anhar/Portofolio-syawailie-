@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Saya</title>
+    <title>Kontak Saya | Kirim Pesan</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Link Font Awesome untuk Ikon Sosmed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ81TrmwO5+CStyYgXkYwU/C2w7v5gL0f8S1y4z5O4G4g2E4k6A5+q6B8F7z6Sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- Navbar (Flexbox) -->
     <nav class="navbar">
         <div class="logo">PORTOFOLIO SYAWAILIE'S</div>
         <div class="menu">
             <a href="index.html">Beranda</a>
             <a href="about.html">Tentang</a>
-            <a href="contact.html">Kontak</a>
+            <a href="contact.html" class="active">Kontak</a>
+            <button id="darkModeToggle" class="dark-mode-btn"><i class="fas fa-moon"></i> Mode Gelap</button>
         </div>
     </nav>
+
     <main class="content-wrapper">
         <h1 class="judul-utama">Mari Berkolaborasi!</h1>
         <section class="contact-form-container">
-            <form action="#" method="POST" class="contact-form">
+            <!-- Form dengan ID untuk JavaScript -->
+            <form id="contactForm" action="#" method="POST" class="contact-form">
                 <h2 class="form-title">Kirim Pesan Untuk Colaborasi</h2>
+                
+                <!-- Notifikasi Pesan Sukses/Error (Diatur oleh JS) -->
+                <div id="notificationMessage" class="notification-area"></div>
+
                 <div class="form-group">
                     <label for="nama">Nama Lengkap:</label>
+                    <!-- Input diberi ID agar mudah diakses oleh JavaScript -->
                     <input type="text" id="nama" name="nama" required>
                 </div>
                 <div class="form-group">
@@ -36,5 +47,92 @@
             </form>
         </section>
     </main>
+    
+    <!-- Footer (Minimalis) -->
+    <footer class="footer-simple">
+        <p>&copy; 2024 Syawailie Syaf Anhar - Mini Portofolio</p>
+    </footer>
+
+    <script>
+        // --- FUNGSI DARK MODE PERSISTEN (Sama di semua halaman) ---
+        function loadDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+            const toggleButton = document.getElementById('darkModeToggle');
+            const icon = toggleButton ? toggleButton.querySelector('i') : null;
+
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-sun';
+                    toggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+                }
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-moon';
+                    toggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+                }
+            }
+        }
+        loadDarkMode(); 
+
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled'); 
+                icon.className = 'fas fa-sun';
+                this.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            } else {
+                localStorage.setItem('darkMode', 'disabled'); 
+                icon.className = 'fas fa-moon';
+                this.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        });
+
+        // --- FUNGSI VALIDASI FORMULIR (Tugas Praktikum JS) ---
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Menghentikan pengiriman formulir standar
+            event.preventDefault(); 
+
+            const form = event.target;
+            const nama = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const pesan = document.getElementById('pesan').value.trim();
+            const notification = document.getElementById('notificationMessage');
+            
+            // Hapus notifikasi sebelumnya
+            notification.textContent = '';
+            notification.className = 'notification-area'; // Reset class
+
+            // 1. Cek jika ada input yang kosong
+            if (nama === '' || email === '' || pesan === '') {
+                // Tampilkan pesan error (Warna merah)
+                notification.classList.add('error');
+                notification.textContent = 'Semua kolom wajib diisi. Mohon periksa kembali input Anda.';
+                
+                // Fokus pada input yang kosong pertama
+                if (nama === '') document.getElementById('nama').focus();
+                else if (email === '') document.getElementById('email').focus();
+                else document.getElementById('pesan').focus();
+
+                return;
+            }
+
+            // 2. Jika valid, tampilkan notifikasi sukses
+            notification.classList.add('success');
+            notification.textContent = 'Pesan berhasil dikirim!';
+            
+            // 3. Reset formulir setelah sukses
+            form.reset();
+
+            // 4. Hapus notifikasi sukses setelah beberapa detik
+            setTimeout(() => {
+                notification.textContent = '';
+                notification.className = 'notification-area';
+            }, 4000); // Notifikasi akan hilang setelah 4 detik
+        });
+    </script>
 </body>
 </html>
