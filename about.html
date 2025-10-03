@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Saya | Profil & Biodata</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Link Font Awesome untuk Ikon Sosmed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ81TrmwO5+CStyYgXkYwU/C2w7v5gL0f8S1y4z5O4G4g2E4k6A5+q6B8F7z6Sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- Navbar (Flexbox) -->
     <nav class="navbar">
         <div class="logo">PORTOFOLIO SYAWAILIE'S</div>
         <div class="menu">
             <a href="index.html">Beranda</a>
-            <a href="about.html">Tentang</a>
+            <a href="about.html" class="active">Tentang</a>
             <a href="contact.html">Kontak</a>
+             <button id="darkModeToggle" class="dark-mode-btn"><i class="fas fa-moon"></i> Mode Gelap</button>
         </div>
     </nav>
 
@@ -21,12 +25,15 @@
         <section class="about-flex-container">
             <div class="about-image-card">
                 <img id="foto-profil-about" src="Image/Poto profil.jpg" alt="Foto Diri Mahasiswa">
+                <!-- Tombol untuk mengatur visibilitas foto -->
+                <button id="toggleFotoBtn" class="toggle-foto-btn">Sembunyikan Foto</button>
             </div>
             <div class="about-text-content">
                 <p class="intro-text">
-                   Saya Mahasiswa Manajemen Informatika di Universitas Negeri Surabaya. Saat ini saya berada di semester 3 dan Saya memiliki ketertarikan pada desain industri kreatif dan perkembangan teknologi. Selain belajar, saya aktif dalam UKM Broadcasting dan menjabat sebagai staf Departemen Kominfo HIMAFORTIC, yang membantu saya mengembangkan kemampuan komunikasi, manajemen media, dan kerja tim
+                    Saya Mahasiswa Manajemen Informatika di Universitas Negeri Surabaya. Saat ini saya berada di semester 3 dan Saya memiliki ketertarikan pada desain industri kreatif dan perkembangan teknologi. Selain belajar, saya aktif dalam UKM Broadcasting dan menjabat sebagai staf Departemen Kominfo HIMAFORTIC, yang membantu saya mengembangkan kemampuan komunikasi, manajemen media, dan kerja tim.
+                </p>
                 
-                   <div class="biodata-kontak-flex">
+                <div class="biodata-kontak-flex">
                     <div class="biodata-wrapper flex-item">
                         <h2>Biodata dan Informasi Akademik</h2>
                         <ul class="data-list">
@@ -42,13 +49,13 @@
                         <h2>Hubungi Saya</h2>
                         <ul class="data-list kontak-list">
                             <li>
-                                <a class="link-sosmed" href="syawailie0611@gmail.com">Email: syawailie0611@gmail.com</a>
+                                <a class="link-sosmed" href="mailto:syawailie0611@gmail.com"><i class="fas fa-envelope"></i> Email: syawailie0611@gmail.com</a>
                             </li>
                             <li>
-                                <a class="link-sosmed" href="https://www.linkedin.com/in/syawailie-syaf-anhar-11855a31a/">LinkedIn: Syawailie Syaf Anhar</a>
+                                <a class="link-sosmed" href="https://www.linkedin.com/in/syawailie-syaf-anhar-11855a31a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn: Syawailie Syaf Anhar</a>
                             </li>
                             <li>
-                                <a class="link-sosmed" href="https://www.instagram.com/syawailie.sa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram: @syawailie.sa</a>
+                                <a class="link-sosmed" href="https://www.instagram.com/syawailie.sa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i> Instagram: @syawailie.sa</a>
                             </li>
                         </ul>
                     </div>
@@ -56,5 +63,64 @@
             </div>
         </section>
     </main>
+    
+    <!-- Footer (Minimalis) -->
+    <footer class="footer-simple">
+        <p>&copy; 2024 Syawailie Syaf Anhar - Mini Portofolio</p>
+    </footer>
+
+    <script>
+        // --- FUNGSI DARK MODE PERSISTEN ---
+        function loadDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+            const toggleButton = document.getElementById('darkModeToggle');
+            const icon = toggleButton ? toggleButton.querySelector('i') : null;
+
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-sun';
+                    toggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+                }
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-moon';
+                    toggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+                }
+            }
+        }
+        loadDarkMode(); 
+
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled'); 
+                icon.className = 'fas fa-sun';
+                this.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            } else {
+                localStorage.setItem('darkMode', 'disabled'); 
+                icon.className = 'fas fa-moon';
+                this.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        });
+
+        // --- FUNGSI TOGGLE FOTO ---
+        document.getElementById('toggleFotoBtn').addEventListener('click', function() {
+            const foto = document.getElementById('foto-profil-about');
+            
+            if (foto.style.visibility === 'hidden') {
+                // Tampilkan Foto
+                foto.style.visibility = 'visible';
+                this.textContent = 'Sembunyikan Foto';
+            } else {
+                // Sembunyikan Foto
+                foto.style.visibility = 'hidden';
+                this.textContent = 'Tampilkan Foto';
+            }
+        });
+    </script>
 </body>
 </html>
