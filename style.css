@@ -1,12 +1,91 @@
-
+/* ------------------- GLOBAL & BASE STYLES ------------------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f4f8; 
     color: #333;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s; /* Transisi untuk Dark Mode */
 }
 
+/* ------------------- DARK MODE STYLES ------------------- */
+body.dark-mode {
+    background-color: #121212; /* Warna latar belakang gelap */
+    color: #e0e0e0; /* Warna teks terang */
+}
+
+body.dark-mode .navbar {
+    background-color: #001641;
+    box-shadow: 0 4px 6px rgba(41, 40, 40, 0.4);
+}
+
+body.dark-mode .navbar a:hover {
+    background-color: #333;
+}
+
+body.dark-mode .judul-utama {
+    color: #b0c4de;
+}
+
+body.dark-mode .hero-section {
+    background-color: #1e1e1e;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .hero-text-content h1 {
+    color: #b0c4de;
+}
+
+body.dark-mode .project-card,
+body.dark-mode .about-flex-container,
+body.dark-mode .contact-form-container {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .project-card {
+    border-left: 5px solid #4a698a;
+}
+
+body.dark-mode .project-card h2,
+body.dark-mode .about-text-content h2,
+body.dark-mode .form-title {
+    color: #b0c4de;
+}
+
+body.dark-mode .tag {
+    background-color: #333;
+    color: #8c9eff;
+}
+
+body.dark-mode .flex-item {
+    background: #282828; 
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+}
+
+body.dark-mode .data-list li {
+    border-bottom: 1px dashed #444;
+}
+
+body.dark-mode .link-kontak-wrapper a.link-sosmed {
+    color: #b0c4de;
+}
+
+body.dark-mode .form-group input, 
+body.dark-mode .form-group textarea {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .footer-simple {
+    background: linear-gradient(to right, #1e1e1e, #030655);
+    border-top: 1px solid #333333;
+}
+
+
+/* ------------------- GENERAL LAYOUT ------------------- */
 .content-wrapper {
     padding: 20px;
     max-width: 1200px;
@@ -27,7 +106,7 @@ body {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    background-color: #22324c; /* Warna utama */
+    background-color: #22324c; 
     padding: 18px 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -39,6 +118,11 @@ body {
     letter-spacing: 1px;
 }
 
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
+
 .navbar a {
     color: white;
     text-decoration: none;
@@ -48,16 +132,108 @@ body {
     transition: background-color 0.3s, transform 0.1s;
 }
 
-.navbar a:hover {
+.navbar a:hover, .navbar a.active {
     background-color: #1a237e; 
     transform: translateY(-2px);
+}
+
+.dark-mode-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 20px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dark-mode-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ------------------- HERO SECTION (INDEX) ------------------- */
+/* HERO SECTION */
+.hero-section {
+    display: flex;
+    justify-content: center;   /* Posisi horizontal di tengah */
+    align-items: center;       /* Posisi vertical di tengah */
+    text-align: center;        /* Teks rata tengah */
+    padding: 60px 20px;
+    gap: 40px;
+    flex-wrap: wrap;           /* Biar responsif di layar kecil */
+}
+
+/* Teks Hero */
+.hero-content {
+    max-width: 600px;
+}
+
+.greeting {
+    font-size: 1.5rem; /* Lebih besar */
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.hero-name {
+    font-size: 2.8rem; /* Dibuat lebih besar */
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.hero-description {
+    font-size: 1.3rem; /* Sedikit diperbesar */
+    margin-bottom: 20px;
+}
+
+/* Tombol & Sosmed */
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.download-cv-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.download-cv-btn:hover {
+    background: #0056b3;
+}
+
+.hero-social-links a {
+    font-size: 1.5rem;  /* Ikon sosmed lebih besar */
+    margin: 0 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.hero-social-links a:hover {
+    color: #007bff;
+}
+
+/* Foto */
+.hero-image-profile {
+   width: 300px;       /* lebar tetap */
+    height: 300px;      /* tinggi tetap */
+    object-fit: cover;  /* gambar otomatis dicrop sesuai ukuran kotak */
+    border-radius: 20%;   /* biar kotak penuh */
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ------------------- HALAMAN HOME (GRID) ------------------- */
 
 .grid-container {
     display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; /* Default ke 2 kolom (Desktop/Tablet) */
     gap: 30px;
 }
 
@@ -88,6 +264,11 @@ body {
 .project-card h2 {
     color: #0e1956;
     font-size: 1.3em;
+    margin-top: 0;
+}
+
+.tag-container {
+    margin-top: 15px;
 }
 
 .tag {
@@ -97,11 +278,10 @@ body {
     padding: 5px 10px;
     border-radius: 15px;
     margin-right: 8px;
-    margin-top: 15px;
     font-size: 0.85em;
 }
 
-/* ------------------- HALAMAN ABOUT (FLEXBOX TINGKAT 1) ------------------- */
+/* ------------------- HALAMAN ABOUT (FLEXBOX) ------------------- */
 
 .about-flex-container {
     display: flex; 
@@ -113,31 +293,42 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* ID SELECTOR: #foto-profil-about */
 #foto-profil-about {
-    width: 200px; 
-    height: 200px;
+    width: 250px; 
+    height: 250px;
     object-fit: cover; 
     object-position: center 20%; 
     border-radius: 50%;
     border: 8px solid #214766;
     box-shadow: 0 0 0 12px rgba(37, 142, 184, 0.2);
     flex-shrink: 0;
+    transition: visibility 0.3s; /* Transisi untuk visibilitas */
 }
-
 
 .about-image-card {
     text-align: center;
     flex-basis: 300px; 
 }
 
-.moto {
-    font-style: italic;
-    color: #616161;
-    margin-top: 20px;
+.toggle-foto-btn {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.toggle-foto-btn:hover {
+    background-color: #303f9f;
 }
 
 .about-text-content {
     flex-grow: 1;
+     text-align: center;
 }
 
 .intro-text {
@@ -146,7 +337,7 @@ body {
     line-height: 1.6;
 }
 
-/* ------------------- FLEXBOX BARU (BIODATA & KONTAK) ------------------- */
+/* FLEXBOX TINGKAT 2 (BIODATA & KONTAK) */
 .biodata-kontak-flex {
     display: flex; 
     gap: 20px;
@@ -170,7 +361,7 @@ body {
     margin-top: 0;
 }
 
-/* ELEMENT SELECTOR (ul, li) */
+/* ELEMENT SELECTOR: ul, li */
 .data-list {
     list-style: none;
     padding-left: 0;
@@ -197,8 +388,12 @@ body {
     margin-bottom: 5px;
 }
 
+.link-kontak-wrapper a.link-sosmed i {
+    margin-right: 8px;
+}
+
 .link-kontak-wrapper a.link-sosmed:hover {
-    color: #0d2260;
+    color: #3f51b5;
     text-decoration: underline;
 }
 
@@ -241,6 +436,10 @@ body {
     transition: border-color 0.3s;
 }
 
+body.dark-mode .form-group label {
+    color: #ccc;
+}
+
 .form-group input:focus, 
 .form-group textarea:focus {
     border-color: #3f51b5;
@@ -264,56 +463,86 @@ body {
     background-color: #145963;
 }
 
-/* ------------------- MEDIA QUERIES (RESPONSIF) ------------------- */
+/* Gaya untuk notifikasi (sukses dan error) */
+.notification-area {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: none; /* Default tersembunyi */
+}
 
-/* 1. TABLET (max-width: 768px) -> Grid 2 Kolom, About menumpuk */
-@media screen and (max-width: 768px) {
-    
-    /* Home Page: Grid berubah menjadi 2 kolom */
-    .grid-container {
-        grid-template-columns: 1fr 1fr; 
+.notification-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block; 
+}
+
+.notification-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+/* ------------------- FOOTER ------------------- */
+.footer-simple {
+    background: linear-gradient(to right, #22324c, #1a237e);
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+
+/* ------------------- DEFAULT (DESKTOP) ------------------- */
+/* Desktop (>= 993px) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* ------------------- TABLET ------------------- */
+/* max-width: 992px → otomatis 2 kolom */
+@media screen and (max-width: 992px) {
+    /* Hero Section menumpuk */
+    .hero-section {
+        flex-direction: column; 
+        text-align: center;
+        gap: 20px;
+    }
+    .hero-image-container {
+        order: -1; /* Foto pindah ke atas */
+    }
+    .hero-actions {
+        justify-content: center;
     }
 
-    /* About Page: Flexbox TINGKAT 1 (Foto + Konten) menumpuk vertikal */
+    /* Grid 2 kolom */
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* About Page: Flex menumpuk */
     .about-flex-container {
         flex-direction: column; 
         align-items: center; 
         gap: 30px;
     }
-
-    /* Flexbox TINGKAT 2 (Biodata + Kontak) juga menumpuk vertikal */
     .biodata-kontak-flex {
         flex-direction: column;
     }
-    
-    /* Foto menjadi lebih kecil di tablet */
-    #foto-profil-about {
-        width: 200px;
-        height: 200px;
-    }
-    .about-image-card {
-        flex-basis: auto;
-    }
-    
-    /* Navbar menyesuaikan */
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar .menu {
-        margin-top: 10px;
-    }
-    .navbar a {
-        margin-left: 0;
-        margin-right: 15px;
-    }
 }
 
-
-/* 2. MOBILE (max-width: 480px) -> Grid 1 Kolom */
-@media screen and (max-width: 480px) {
-    
-    /* Home Page: Grid berubah menjadi 1 kolom */
+/* ------------------- MOBILE ------------------- */
+/* max-width: 600px → otomatis 1 kolom */
+@media screen and (max-width: 600px) {
+    /* Grid 1 kolom */
     .grid-container {
         grid-template-columns: 1fr; 
     }
@@ -323,18 +552,44 @@ body {
         margin: 30px 0;
     }
 
-    /* Foto lebih kecil di mobile */
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+    .navbar .menu {
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+    .navbar a, .dark-mode-btn {
+        margin-left: 0;
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+    
+    /* Foto Hero lebih kecil */
+    .hero-image-container img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .hero-text-content h1 {
+        font-size: 2em;
+    }
+
+    /* Foto About lebih kecil */
     #foto-profil-about {
         width: 150px;
         height: 150px;
     }
 
-    .navbar a {
-        display: block; 
-        margin: 5px 0;
-    }
-
     .content-wrapper {
         padding: 10px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
     }
 }
