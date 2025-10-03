@@ -5,60 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda | Mini Portofolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Link Font Awesome untuk Ikon Sosmed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ81TrmwO5+CStyYgXkYwU/C2w7v5gL0f8S1y4z5O4G4g2E4k6A5+q6B8F7z6Sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- Navbar (Flexbox) -->
     <nav class="navbar">
         <div class="logo">PORTOFOLIO SYAWAILIE'S</div>
         <div class="menu">
             <a href="index.html" class="active">Beranda</a>
             <a href="about.html">Tentang</a>
             <a href="contact.html">Kontak</a>
+             <button id="darkModeToggle" class="dark-mode-btn"><i class="fas fa-moon"></i> Mode Gelap</button>
         </div>
     </nav>
 
     <main class="content-wrapper">
-        <h1 class="judul-utama">MINI PROYEK SAYA</h1>
+        <!-- HERO SECTION: Pengenalan Singkat, Foto, CV, dan Sosmed -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <p class="greeting">Halo, saya</p>
+                <h1 class="hero-name">Syawailie Syaf Anhar</h1>
+                <p class="hero-description">Mahasiswa Manajemen Informatika UNESA</p>
+                <div class="hero-actions">
+                    <a href="cv_syawailie.pdf" download class="download-cv-btn">Download CV</a>
+                    <div class="hero-social-links">
+                        <!-- Menggunakan Ikon Font Awesome -->
+                        <a href="mailto:syawailie0611@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/syawailie-syaf-anhar-11855a31a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/syawailie.sa" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="Image/Poto profil.jpg" alt="Foto Profil Syawailie" class="hero-image-profile">
+            </div>
+        </section>
         
-
+        <h2 class="judul-utama">MINI PROYEK SAYA</h2>
+        
+        <!-- Project Grid (Grid 2x2) -->
         <section class="grid-container">
+            <!-- Project 1 -->
             <div class="project-card">
                 <img src="Image/Biji Coffe Shope.png" alt="Preview Coffee Shop App" class="project-image">
                 <h2>Aplikasi Coffee Shop</h2>
                 <p>Membuat prototipe aplikasi untuk coffee shop dengan tampilan modern, fitur pemesanan online, dan halaman menu yang interaktif.</p>
-                <div class="tag-container"></div>
+                <div class="tag-container">
                     <span class="tag">#UI/UX</span>
                     <span class="tag">#Figma</span>
                 </div>
             </div>
+            <!-- Project 2 -->
             <div class="project-card">
-                 <img src="Image/rumah makan betawi.png" alt="Preview Website Rumah Makan" class="project-image">
-                 <h2>Website Rumah Makan</h2>
-                 <p>Merancang website responsif untuk rumah makan dengan halaman home, about, dan daftar menu yang user-friendly.</p>
+                <img src="Image/rumah makan betawi.png" alt="Preview Website Rumah Makan" class="project-image">
+                <h2>Website Rumah Makan</h2>
+                <p>Merancang website responsif untuk rumah makan dengan halaman home, about, dan daftar menu yang user-friendly.</p>
                 <div class="tag-container">
                     <span class="tag">#HTML</span>
                     <span class="tag">#CSS</span>
                 </div>
             </div>
+            <!-- Project 3 -->
             <div class="project-card">
-                 <img src="Image/praklab.png" alt="Preview Praktikum Lab" class="project-image">
-                 <h2>Dokumentasi Praktikum Lab</h2>
-                 <p>Membuat laporan dan dokumentasi praktikum dengan rapi serta visual yang menarik untuk memudahkan pemahaman materi.</p>
+                <img src="Image/praklab.png" alt="Preview Praktikum Lab" class="project-image">
+                <h2>Dokumentasi Praktikum Lab</h2>
+                <p>Membuat laporan dan dokumentasi praktikum dengan rapi serta visual yang menarik untuk memudahkan pemahaman materi.</p>
                 <div class="tag-container">
-                   <span class="tag">#Documentation</span>
-                   <span class="tag">#Teamwork</span>
+                    <span class="tag">#Documentation</span>
+                    <span class="tag">#Teamwork</span>
                 </div>
             </div>
-             <div class="project-card">
-                 <img src="Image/Sosial media.png" alt="Preview Media Sosial" class="project-image">
-                 <h2>Pengelola Media Sosial</h2>
-                 <p>Mengelola konten dan desain media sosial HIMAFORTIC bersama tim, menjaga branding, dan meningkatkan interaksi audiens.</p>
+            <!-- Project 4 -->
+            <div class="project-card">
+                <img src="Image/Sosial media.png" alt="Preview Media Sosial" class="project-image">
+                <h2>Pengelola Media Sosial</h2>
+                <p>Mengelola konten dan desain media sosial HIMAFORTIC bersama tim, menjaga branding, dan meningkatkan interaksi audiens.</p>
                 <div class="tag-container">
-                   <span class="tag">#SosialMedia</span>
-                   <span class="tag">#Desain</span>
-                   <span class="tag">#ContentCreator</span>
+                    <span class="tag">#SosialMedia</span>
+                    <span class="tag">#Desain</span>
+                    <span class="tag">#ContentCreator</span>
                 </div>
             </div>
         </section>
     </main>
+    
+    <!-- Footer (Minimalis) -->
+    <footer class="footer-simple">
+        <p>&copy; 2024 Syawailie Syaf Anhar - Mini Portofolio</p>
+    </footer>
+
+    <script>
+        // Fungsi Dark Mode yang Persisten
+        function loadDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+            const toggleButton = document.getElementById('darkModeToggle');
+            const icon = toggleButton ? toggleButton.querySelector('i') : null;
+
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-sun';
+                    toggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+                }
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (icon) {
+                    icon.className = 'fas fa-moon';
+                    toggleButton.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+                }
+            }
+        }
+
+        // Panggil saat halaman dimuat
+        loadDarkMode(); 
+
+        // Atur event listener untuk tombol Dark Mode
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled'); // Simpan status
+                icon.className = 'fas fa-sun';
+                this.innerHTML = '<i class="fas fa-sun"></i> Mode Terang';
+            } else {
+                localStorage.setItem('darkMode', 'disabled'); // Hapus status
+                icon.className = 'fas fa-moon';
+                this.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap';
+            }
+        });
+    </script>
 </body>
 </html>
